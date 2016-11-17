@@ -10,9 +10,9 @@
 
     if (isset($_POST['OnLogin'])) {
 
-        if ($DaoLogin->login(@$_POST['usuario_inserido'], @$_POST['senha_inserido'])) {
+        if ($DaoLogin->cpf(@$_POST['usuario_inserido'], @$_POST['senha_inserido'])) {
             @$_SESSION['logado'] = '1';
-            @$_SESSION['nome'] = $DaoLogin->RetornaNome(@$_POST['usuario']);
+            @$_SESSION['nome'] = $DaoLogin->RetornaNome(@$_POST['cpf']);
             @$_SESSION['last_login_timestamp'] = time();
             header("Location: home.php");
         } else {
@@ -104,9 +104,8 @@
         <fieldset style = "width: 45%; margin: 100px auto; opacity:.80;">
             <form action=" " method="post"> 
                 <center>
-                    <legend><h1> - - - - - - LOGIN #ITSOLUTION: - - - - - -</h1></legend>
                     <img src="img/logo.png" alt="img_" width="270" height="120"/>
-                    <h2><b> Usuário: </b><input type="text" name="usuario_inserido" required=""/></h2>
+                    <h2><b> CPF: </b><input type="text" name="usuario_inserido" required=""/></h2>
                     <h2><b> Senha: </b><input type="password" name="senha_inserido" required=""/></h2><br>
                     <input type='submit' name="OnLogin" value='Entrar'/>
                     <br>
