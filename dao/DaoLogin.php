@@ -91,8 +91,18 @@ class DaoLogin {
         return $p_sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function deletar($cpf) {
+    public function deletar_cliente($cpf) {
         $sql = "DELETE FROM cliente WHERE cpf =:cpf";
+        try {
+            $p_sql = Conexao::getInstance()->prepare($sql);
+            $p_sql->bindValue(":cpf", $cpf);
+            return $p_sql->execute();
+        } catch (PDOException $exc) {
+            return $exc->getMessage();
+        }
+    }
+     public function deletar_funcionario($cpf) {
+        $sql = "DELETE FROM funcionario WHERE cpf =:cpf";
         try {
             $p_sql = Conexao::getInstance()->prepare($sql);
             $p_sql->bindValue(":cpf", $cpf);

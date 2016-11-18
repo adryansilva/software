@@ -2,7 +2,7 @@
     $cpf = $_GET["cpf"];
     require_once 'dao/DaoLogin.php';
     $DaoLogin = DaoLogin::getInstance();
-    $exe = $DaoLogin->deletar($cpf);
+    $exe = $DaoLogin->deletar_cliente($cpf);
     if ($exe) {
     echo "<script type='text/javascript'>"
         . " alert('Cliente Excluido com Sucesso!');"
