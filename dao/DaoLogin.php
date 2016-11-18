@@ -76,9 +76,46 @@ class DaoLogin {
             echo $exc->getMessage();
         }
     }
+    public function inserir_produto(Produto $produto) {
+        try {
+            $sql = "INSERT INTO produto "
+                    . " (nome_completo,"
+                    . " tipo,"
+                    . " preco_venda,"
+                    . " quantidade_estoque,"
+                    . "descricao,"
+                    . "preco_custo,"
+                    . "imagem)"
+                    . " VALUES "
+                    . " (:nome_completo,"
+                    . " :tipo,"
+                    . " :preco_venda,"
+                    . " :quantidade_estoque,"
+                    . " :descricao,"
+                    . " :preco_custo,"
+                    . " :imagem)";
+            $p_sql = Conexao::getInstance()->prepare($sql);
+            $p_sql->bindValue(":nome_completo", $produto->getNome_completo());
+            $p_sql->bindValue(":tipo", $produto->getTipo());
+            $p_sql->bindValue(":preco_venda", $produto->getPreco_venda());
+            $p_sql->bindValue(":quantidade_estoque", $produto->getQuantidade_estoque());
+            $p_sql->bindValue(":descricao", $produto->getDescricao());
+            $p_sql->bindValue(":preco_custo", $produto->getPreco_custo());
+             $p_sql->bindValue(":imagem", $produto->getImagem());
+            return $p_sql->execute();
+        } catch (PDOException $exc) {
+            echo $exc->getMessage();
+        }
+    }
 
     public function listar_cliente() {
         $sql = "SELECT * FROM cliente";
+        $p_sql = Conexao::getInstance()->prepare($sql);
+        $p_sql->execute();
+        return $p_sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function listar_produto() {
+        $sql = "SELECT * FROM produto";
         $p_sql = Conexao::getInstance()->prepare($sql);
         $p_sql->execute();
         return $p_sql->fetchAll(PDO::FETCH_ASSOC);
@@ -168,6 +205,13 @@ class DaoLogin {
         $p_sql->execute();
         return $p_sql->fetch(PDO::FETCH_ASSOC);
     }
+    public function getProduto($codigo) {
+        $sql = "SELECT * FROM produto WHERE codigo =:codigo";
+        $p_sql = Conexao::getInstance()->prepare($sql);
+        $p_sql->bindValue(":codigo", $codigo);
+        $p_sql->execute();
+        return $p_sql->fetch(PDO::FETCH_ASSOC);
+    }
 
     public function atualizar(Cliente $cliente) {
         try {
@@ -197,6 +241,24 @@ class DaoLogin {
             $p_sql->bindValue(":email", $funcionario->getEmail());
             $p_sql->bindValue(":funcao", $funcionario->getFuncao());
             $p_sql->bindValue(":senha", $funcionario->getSenha());
+            return $p_sql->execute();
+        } catch (PDOException $exc) {
+            return $exc->getMessage();
+        }
+    }
+    public function atualizar_produto(Produto $produto) {
+        try {
+            $sql = "UPDATE produto set nome_completo =:nome_completo, tipo=:tipo, preco_venda=:preco_venda, quantidade_estoque=:quantidade_estoque, descricao=:descricao, preco_custo=:preco_custo, imagem=:imagem"
+                    . " WHERE codigo=:codigo";
+            $p_sql = Conexao::getInstance()->prepare($sql);
+            $p_sql->bindValue(":codigo", $produto->getCodigo());
+            $p_sql->bindValue(":nome_completo", $produto->getNome_completo());
+            $p_sql->bindValue(":tipo", $produto->getTipo());
+            $p_sql->bindValue(":preco_venda", $produto->getPreco_venda());
+            $p_sql->bindValue(":quantidade_estoque", $produto->getQuantidade_estoque());
+            $p_sql->bindValue(":descricao", $produto->getDescricao());
+            $p_sql->bindValue(":preco_custo", $produto->getPreco_custo());
+             $p_sql->bindValue(":imagem", $produto->getImagem());
             return $p_sql->execute();
         } catch (PDOException $exc) {
             return $exc->getMessage();
