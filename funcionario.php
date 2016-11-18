@@ -1,7 +1,7 @@
 <html>
     <center>
-        <h1>Lista de Clientes:</h1>
-        <a href="?pg=addCliente"><input type="button" value="Adicionar Cliente" class="addcliente"/></a>
+        <h1>Lista de Funcionarios:</h1>
+        <a href="?pg=addFuncionario"><input type="button" value="Adicionar Funcionario" class="addcliente"/></a>
     </center>
     <style>
         table {
@@ -27,7 +27,7 @@
     <?php
     require_once 'dao/DaoLogin.php';
     $DaoLogin = DaoLogin::getInstance();
-    $dados = $DaoLogin->listar_cliente();
+    $dados = $DaoLogin->listar_funcionario();
     ?>
     <table>
         <tr>
@@ -40,6 +40,8 @@
         <th>Endereço:</th>
         <br>
         <th>Email:</th>
+        <th>Função:</th>
+        <br>
         <th> Ações </th>
     </tr>
     <?php
@@ -51,8 +53,9 @@
         echo "<td>" . $row["numero_celular"] . "</td>";
         echo "<td>" . $row["endereco"] . "</td>";
         echo "<td>" . $row["email"] . "</td>";
-        echo "        <td><a href='?pg=editCliente&cpf=$cpf' title='Editar'> <i class='glyphicon glyphicon-pencil'></i></a>    ";
-        echo "       <a href='?pg=delCliente&cpf=$cpf' title='Excluir' onclick='return confirm(\"Deseja Excluir mesmo?\")'> <i class='glyphicon glyphicon-trash'></i></a></td>   ";
+        echo "<td>" . $row["funcao"] . "</td>";
+        echo "        <td><a href='?pg=editFuncionario&cpf=$cpf' title='Editar'> <i class='glyphicon glyphicon-pencil'></i></a>    ";
+        echo "       <a href='?pg=delFuncionario&cpf=$cpf' title='Excluir' onclick='return confirm(\"Deseja Excluir mesmo?\")'> <i class='glyphicon glyphicon-trash'></i></a></td>   ";
         echo " </tr>";
     }
     ?>

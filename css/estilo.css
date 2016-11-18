@@ -90,7 +90,7 @@ border-radius: 10px 5px 10px 5px;
 }
 .servicos:hover{background: #0CF; width: 160px; transition: all 0.2s ease-in-out; border-color: activeborder;}
 .addcliente {
-width: 150px;
+width: 190px;
 height: 50px;
 background: #d7d9d8;
 border: 1px solid #CCC;
@@ -101,7 +101,7 @@ font-family:"Verdana";
 font-size: 13px;
 border-radius: 10px 5px 10px 5px;
 }
-.addcliente:hover{background: #0CF; width: 160px; transition: all 0.2s ease-in-out; border-color: activeborder;}
+.addcliente:hover{background: #0CF; width: 200px; transition: all 0.2s ease-in-out; border-color: activeborder;}
 /** --------------------------- * FIM * PERSONALIZAÇÂO PARA O MENU -------------------------------- **/
 /** --------------------------- * INICIO * PERSONALIZAÇÂO PARA O PAINEL -------------------------------- **/
 .titulo {
