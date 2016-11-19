@@ -12,7 +12,9 @@
             font-family: inherit;
         }
     </style>
-    <h1> Editar Funcionario: </h1>
+    <div class="titulo2">
+            <span class="label label-success">EDITAR FUNCJONÁRIO:</span>
+        </div>
     <br>
     <a href="?pg=funcionario">Voltar</a>
     <br>

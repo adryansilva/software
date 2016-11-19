@@ -1,6 +1,8 @@
 <html>
     <center>
-        <h1>Lista de Funcionarios:</h1>
+        <div class="titulo2">
+            <span class="label label-success">LISTA DE FUNCIONÁRIOS:</span>
+        </div><br>
         <a href="?pg=addFuncionario"><input type="button" value="Adicionar Funcionario" class="addcliente"/></a><br><br><br>
     </center>
     <style>

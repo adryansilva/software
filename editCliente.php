@@ -12,7 +12,9 @@
             font-family: inherit;
         }
     </style>
-    <h1> Editar Cliente: </h1>
+    <div class="titulo2">
+            <span class="label label-success">EDITAR CLIENTE:</span>
+        </div>
     <br>
     <a href="?pg=cliente">Voltar</a>
     <br>

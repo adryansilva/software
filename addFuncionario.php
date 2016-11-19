@@ -6,7 +6,9 @@
             font-family: inherit;
         }
     </style>
-    <h1> Adicionar Funcionario: </h1>
+   <div class="titulo2">
+            <span class="label label-success">ADICIONAR FUNCIONÁRIO:</span>
+        </div>
     <br>
     <a href="?pg=Funcionario"><h4><b>Voltar</b></h4></a>
     <br>

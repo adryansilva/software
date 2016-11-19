@@ -57,5 +57,11 @@
                         include 'painel.php';
                     }
                     ?>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+        </div>
                     </body>
                     </html>

@@ -6,7 +6,9 @@
             font-family: inherit;
         }
     </style>
-    <h1> Adicionar Produto: </h1>
+    <div class="titulo2">
+            <span class="label label-success">ADICIONAR PRODUTO:</span>
+        </div>
     <br>
     <a href="?pg=produto"><h4><b>Voltar</b></h4></a>
     <br>

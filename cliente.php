@@ -1,6 +1,8 @@
 <html>
     <center>
-        <h1>Lista de Clientes:</h1>
+        <div class="titulo2">
+            <span class="label label-success">LISTA DE CLIENTES:</span>
+        </div><br>
         <a href="?pg=addCliente"><input type="button" value="Adicionar Cliente" class="addcliente"/></a><br><br><br>
     </center>
     <style>
