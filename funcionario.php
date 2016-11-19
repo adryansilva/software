@@ -1,7 +1,7 @@
 <html>
     <center>
         <h1>Lista de Funcionarios:</h1>
-        <a href="?pg=addFuncionario"><input type="button" value="Adicionar Funcionario" class="addcliente"/></a>
+        <a href="?pg=addFuncionario"><input type="button" value="Adicionar Funcionario" class="addcliente"/></a><br><br><br>
     </center>
     <style>
         table {
@@ -14,6 +14,7 @@
         table, th, td {
             border: 1px solid black;
             text-align: center;
+             margin: 5px auto;
         }
         th {
             height: 50px;
@@ -32,16 +33,11 @@
     <table>
         <tr>
             <th>Nome_Completo:</th>
-        <br>
         <th>CPF:</th>
-        <br>
         <th>Número_celular:</th>
-        <br>
         <th>Endereço:</th>
-        <br>
         <th>Email:</th>
         <th>Função:</th>
-        <br>
         <th> Ações </th>
     </tr>
     <?php

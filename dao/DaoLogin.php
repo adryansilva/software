@@ -127,6 +127,12 @@ class DaoLogin {
         $p_sql->execute();
         return $p_sql->fetchAll(PDO::FETCH_ASSOC);
     }
+     public function listar_pedido() {
+        $sql = "SELECT * FROM pedido";
+        $p_sql = Conexao::getInstance()->prepare($sql);
+        $p_sql->execute();
+        return $p_sql->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     public function deletar_cliente($cpf) {
         $sql = "DELETE FROM cliente WHERE cpf =:cpf";
@@ -143,6 +149,16 @@ class DaoLogin {
         try {
             $p_sql = Conexao::getInstance()->prepare($sql);
             $p_sql->bindValue(":cpf", $cpf);
+            return $p_sql->execute();
+        } catch (PDOException $exc) {
+            return $exc->getMessage();
+        }
+    }
+     public function deletar_produto($codigo) {
+        $sql = "DELETE FROM produto WHERE codigo =:codigo";
+        try {
+            $p_sql = Conexao::getInstance()->prepare($sql);
+            $p_sql->bindValue(":codigo", $codigo);
             return $p_sql->execute();
         } catch (PDOException $exc) {
             return $exc->getMessage();

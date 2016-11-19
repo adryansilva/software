@@ -1,7 +1,7 @@
 <html>
     <center>
-        <h1>Lista de Funcionarios:</h1>
-        <a href="?pg=addProduto"><input type="button" value="Adicionar Produto" class="addcliente"/></a>
+        <h1>Lista de Produtos:</h1>
+        <a href="?pg=addProduto"><input type="button" value="Adicionar Produto" class="addcliente"/></a><br><br><br>
     </center>
     <style>
         table {
@@ -14,6 +14,7 @@
         table, th, td {
             border: 1px solid black;
             text-align: center;
+            margin: 5px auto;
         }
         th {
             height: 50px;
@@ -32,21 +33,13 @@
     <table>
         <tr>
             <th>Código:</th>
-        <br>
         <th>Nome do Produto:</th>
-        <br>
         <th>Tipo:</th>
-        <br>
         <th>Preço Venda:</th>
-        <br>
         <th>Quantidade Estoque:</th>
-        <br>
         <th>Descrição:</th>
-        <br>
         <th>Preço Custo:</th>
-        <br>
         <th>Imagem:</th>
-        <br>
         <th> Ações </th>
     </tr>
     <?php

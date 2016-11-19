@@ -25,7 +25,7 @@
 }
 /** --------------------------- PERSONALIZAÇÂO PARA PARA O MENU -------------------------------- **/
 .inicio {
-width: 100px;
+width: 90px;
 height: 50px;
 background: #d7d9d8;
 border: 1px solid #CCC;
@@ -36,9 +36,9 @@ font-family:"Verdana";
 font-size: 13px;
 border-radius: 10px 5px 10px 5px;
 }
-.inicio:hover{background: #0CF; width: 160px; transition: all 0.2s ease-in-out; border-color: activeborder}
+.inicio:hover{background: #0CF; width: 130px; transition: all 0.2s ease-in-out; border-color: activeborder}
 .clientes {
-width: 100px;
+width: 90px;
 height: 50px;
 background: #d7d9d8;
 border: 1px solid #CCC;
@@ -49,9 +49,9 @@ font-family:"Verdana";
 font-size: 13px;
 border-radius: 10px 5px 10px 5px;
 }
-.clientes:hover{background: #0CF; width: 160px; transition: all 0.2s ease-in-out; border-color: activeborder}
+.clientes:hover{background: #0CF; width: 130px; transition: all 0.2s ease-in-out; border-color: activeborder}
 .funcionarios {
-width: 100px;
+width: 105px;
 height: 50px;
 background: #d7d9d8;
 border: 1px solid #CCC;
@@ -62,9 +62,9 @@ font-family:"Verdana";
 font-size: 13px;
 border-radius: 10px 5px 10px 5px;
 }
-.funcionarios:hover{background: #0CF; width: 160px; transition: all 0.2s ease-in-out; border-color: activeborder}
+.funcionarios:hover{background: #0CF; width: 135px; transition: all 0.2s ease-in-out; border-color: activeborder}
 .produtos {
-width: 100px;
+width: 90px;
 height: 50px;
 background: #d7d9d8;
 border: 1px solid #CCC;
@@ -75,9 +75,9 @@ font-family:"Verdana";
 font-size: 13px;
 border-radius: 10px 5px 10px 5px;
 }
-.produtos:hover{background: #0CF; width: 160px; transition: all 0.2s ease-in-out; border-color: activeborder}
+.produtos:hover{background: #0CF; width: 130px; transition: all 0.2s ease-in-out; border-color: activeborder}
 .servicos {
-width: 100px;
+width: 90px;
 height: 50px;
 background: #d7d9d8;
 border: 1px solid #CCC;
@@ -88,9 +88,9 @@ font-family:"Verdana";
 font-size: 13px;
 border-radius: 10px 5px 10px 5px;
 }
-.servicos:hover{background: #0CF; width: 160px; transition: all 0.2s ease-in-out; border-color: activeborder;}
+.servicos:hover{background: #0CF; width: 130px; transition: all 0.2s ease-in-out; border-color: activeborder;}
 .deslogar {
-width: 100px;
+width: 75px;
 height: 50px;
 background: #d7d9d8;
 border: 1px solid #CCC;
@@ -101,9 +101,9 @@ font-family:"Verdana";
 font-size: 13px;
 border-radius: 10px 5px 10px 5px;
 }
-.deslogar:hover{background: #0CF; width: 160px; transition: all 0.2s ease-in-out; border-color: activeborder;}
+.deslogar:hover{background: #e71818; width: 90px; transition: all 0.2s ease-in-out; border-color: activeborder;}
 .addcliente {
-width: 190px;
+width: 170px;
 height: 50px;
 background: #d7d9d8;
 border: 1px solid #CCC;
@@ -114,13 +114,21 @@ font-family:"Verdana";
 font-size: 13px;
 border-radius: 10px 5px 10px 5px;
 }
-.addcliente:hover{background: #0CF; width: 200px; transition: all 0.2s ease-in-out; border-color: activeborder;}
+.addcliente:hover{background: #0CF; width: 190px; transition: all 0.2s ease-in-out; border-color: activeborder;}
 /** --------------------------- * FIM * PERSONALIZAÇÂO PARA O MENU -------------------------------- **/
 /** --------------------------- * INICIO * PERSONALIZAÇÂO PARA O PAINEL -------------------------------- **/
 .titulo {
     width: 100%;
     text-align: center;
     margin-top: 60px;
+    font-size: 30px;
+    font-family: Tahoma;
+    font-variant-caps: all-small-caps;
+}
+.titulo2 {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
     font-size: 30px;
     font-family: Tahoma;
     font-variant-caps: all-small-caps;

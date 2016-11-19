@@ -1,7 +1,7 @@
 <html>
     <center>
         <h1>Lista de Clientes:</h1>
-        <a href="?pg=addCliente"><input type="button" value="Adicionar Cliente" class="addcliente"/></a>
+        <a href="?pg=addCliente"><input type="button" value="Adicionar Cliente" class="addcliente"/></a><br><br><br>
     </center>
     <style>
         table {
@@ -14,6 +14,7 @@
         table, th, td {
             border: 1px solid black;
             text-align: center;
+            margin: 5px auto;
         }
         th {
             height: 50px;
@@ -32,13 +33,9 @@
     <table>
         <tr>
             <th>Nome_Completo:</th>
-        <br>
         <th>CPF:</th>
-        <br>
         <th>Número_celular:</th>
-        <br>
         <th>Endereço:</th>
-        <br>
         <th>Email:</th>
         <th> Ações </th>
     </tr>
