@@ -22,8 +22,8 @@
             <input type="text" name="nome_completo" required=""style="width: 45%; height: 35px;"/>
             <br>
             <br>
-            <label><b>Tipo do produto:</b></label><br>
-            <input type="text" name=tipo required="" style="width: 45%; height: 35px;"/>
+            <label><b>Categoria do produto:</b></label><br>
+            <input type="text" name=categoria_id required="" style="width: 45%; height: 35px;"/>
             <br>
             <br>
              <label><b>Preço de Venda:</b></label><br>
@@ -66,7 +66,7 @@ require_once './model/Produto.php';
 if (isset($_POST["botao"])) {
     $produto = new Produto();
     $produto->setNome_completo(@$_POST["nome_completo"]);
-    $produto->setTipo(@$_POST["tipo"]);
+    $produto->setCategoria_id(@$_POST["categoria_id"]);
     $produto->setPreco_venda(@$_POST["preco_venda"]);
     $produto->setQuantidade_estoque(@$_POST["quantidade_estoque"]);
     $produto->setDescricao(@$_POST["descricao"]);

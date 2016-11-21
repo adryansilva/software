@@ -1,4 +1,5 @@
 <html>
+    <meta charset="UTF-8">
     <center>
         <div class="titulo2">
             <span class="label label-success">LISTA DE FUNCIONÁRIOS:</span>

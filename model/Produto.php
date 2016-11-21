@@ -13,24 +13,24 @@
  */
 class Produto {
     private $codigo;
+    private $imagem;
     private $nome_completo;
-    private $tipo;
     private $preco_venda;
     private $quantidade_estoque;
     private $descricao;
     private $preco_custo;
-    private $imagem;
+    private $categoria_id;
     
     function getCodigo() {
         return $this->codigo;
     }
 
-    function getNome_completo() {
-        return $this->nome_completo;
+    function getImagem() {
+        return $this->imagem;
     }
 
-    function getTipo() {
-        return $this->tipo;
+    function getNome_completo() {
+        return $this->nome_completo;
     }
 
     function getPreco_venda() {
@@ -49,20 +49,20 @@ class Produto {
         return $this->preco_custo;
     }
 
-    function getImagem() {
-        return $this->imagem;
+    function getCategoria_id() {
+        return $this->categoria_id;
     }
 
     function setCodigo($codigo) {
         $this->codigo = $codigo;
     }
 
-    function setNome_completo($nome_completo) {
-        $this->nome_completo = $nome_completo;
+    function setImagem($imagem) {
+        $this->imagem = $imagem;
     }
 
-    function setTipo($tipo) {
-        $this->tipo = $tipo;
+    function setNome_completo($nome_completo) {
+        $this->nome_completo = $nome_completo;
     }
 
     function setPreco_venda($preco_venda) {
@@ -81,9 +81,10 @@ class Produto {
         $this->preco_custo = $preco_custo;
     }
 
-    function setImagem($imagem) {
-        $this->imagem = $imagem;
+    function setCategoria_id($categoria_id) {
+        $this->categoria_id = $categoria_id;
     }
+
 
 
 }

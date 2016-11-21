@@ -48,30 +48,26 @@
     ?>
     <table>
         <tr>
-            <th>Número:</th>
+        <th>Número:</th>
         <th>Data:</th>
         <th>Equipamento:</th>
-        <th>Preço Venda:</th>
-        <th>Quantidade Estoque:</th>
-        <th>Descrição:</th>
-        <th>Preço Custo:</th>
-        <th>Imagem:</th>
+        <th>Custo:</th>
+        <th>CPF do Cliente:</th>
+        <th>CPF do Funcionário:</th>
         <th> Ações </th>
     </tr>
     <?php
     foreach ($dados as $row) {
-        $codigo = $row["codigo"];
+        $numero = $row["numero"];
         echo "<tr>";
-        echo "<td>" . $row["codigo"] . "</td>";
-        echo "<td>" . $row["nome_completo"] . "</td>";
-        echo "<td>" . $row["tipo"] . "</td>";
-        echo "<td>" . $row["preco_venda"] . "</td>";
-        echo "<td>" . $row["quantidade_estoque"] . "</td>";
-        echo "<td>" . $row["descricao"] . "</td>";
-        echo "<td>" . $row["preco_custo"] . "</td>";
-        echo "<td>" . $row["imagem"] . "</td>";
-        echo "        <td><a href='?pg=editProduto&codigo=$codigo' title='Editar'> <i class='glyphicon glyphicon-pencil'></i></a>    ";
-        echo "       <a href='?pg=delProduto&codigo=$codigo' title='Excluir' onclick='return confirm(\"Deseja Excluir mesmo?\")'> <i class='glyphicon glyphicon-trash'></i></a></td>   ";
+        echo "<td>" . $row["numero"] . "</td>";
+        echo "<td>" . $row["data"] . "</td>";
+        echo "<td>" . $row["equipamento"] . "</td>";
+        echo "<td>" . $row["custo"] . "</td>";
+        echo "<td>" . $row["clientes_cpf"] . "</td>";
+        echo "<td>" . $row["funcionarios_cpf"] . "</td>";
+        echo "        <td><a href='?pg=editProduto&codigo=$numero' title='Editar'> <i class='glyphicon glyphicon-pencil'></i></a>    ";
+        echo "       <a href='?pg=delProduto&codigo=$numero' title='Excluir' onclick='return confirm(\"Deseja Excluir mesmo?\")'> <i class='glyphicon glyphicon-trash'></i></a></td>   ";
         echo " </tr>";
     }
     ?>

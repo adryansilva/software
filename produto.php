@@ -1,8 +1,10 @@
 <html>
+    <meta charset="UTF-8">
     <center>
         <div class="titulo2">
             <span class="label label-success">LISTA DE PRODUTOS:</span>
         </div><br>
+                <a href="?pg=categoria"><input type="button" value="Ver Categorias" class="addcliente"/></a><br><br><br>
         <a href="?pg=addProduto"><input type="button" value="Adicionar Produto" class="addcliente"/></a><br><br><br>
     </center>
     <style>
@@ -40,7 +42,7 @@
         <tr>
             <th>Código:</th>
             <th>Nome do Produto:</th>
-            <th>Tipo:</th>
+            <th>Categoria:</th>
             <th>Preço Venda:</th>
             <th>Quantidade Estoque:</th>
             <th>Descrição:</th>
@@ -54,7 +56,7 @@
             echo "<tr>";
             echo "<td>" . $row["codigo"] . "</td>";
             echo "<td>" . $row["nome_completo"] . "</td>";
-            echo "<td>" . $row["tipo"] . "</td>";
+            echo "<td>" . $row["categoria"] . "</td>";
             echo "<td>" . $row["preco_venda"] . "</td>";
             echo "<td>" . $row["quantidade_estoque"] . "</td>";
             echo "<td>" . $row["descricao"] . "</td>";

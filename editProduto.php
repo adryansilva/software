@@ -27,8 +27,8 @@ $atualizar_produto = $DaoLogin->getProduto($codigo);
             <label><b>Nome Completo:</b></label><br>
             <input type="hidden" name="codigo" value="<?= $atualizar_produto["codigo"] ?>"/><br>
             <input type="text" name="nome_completo" value="<?= $atualizar_produto["nome_completo"] ?>" required="" style="width: 45%; height: 35px;"/><br>
-            <label><b>Tipo de Produto:</b></label><br>
-            <input type="text" name="tipo" maxlength="15" value="<?= $atualizar_produto["tipo"] ?>" required="" style="width: 45%; height: 35px;"/><br>
+            <label><b>Categoria do Produto:</b></label><br>
+            <input type="text" name="categoria_id" maxlength="15" value="<?= $atualizar_produto["categoria_id"] ?>" required="" style="width: 45%; height: 35px;"/><br>
             <label><b>Preço Venda:</b></label><br>
             <input type="number" name="preco_venda" value="<?= $atualizar_produto["preco_venda"] ?>" required="" style="width: 45%; height: 35px;"/><br>
             <label><b>Quantidade em Estoque:</b></label><br>
@@ -61,7 +61,7 @@ if (isset($_POST["botao"])) {
     $produto = new Produto();
     $produto->setCodigo(@$_POST["codigo"]);
     $produto->setNome_completo(@$_POST["nome_completo"]);
-    $produto->setTipo(@$_POST["tipo"]);
+    $produto->setCategoria_id(@$_POST["categoria_id"]);
     $produto->setPreco_venda(@$_POST["preco_venda"]);
     $produto->setDescricao(@$_POST["descricao"]);
     $produto->setPreco_custo(@$_POST["preco_custo"]);
