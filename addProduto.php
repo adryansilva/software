@@ -1,3 +1,9 @@
+<?php
+require_once './dao/DaoLogin.php';
+require_once './model/Produto.php';
+$DaoLogin = DaoLogin::getInstance();
+$listaCategorias = $DaoLogin->listar_categoria();
+?>
 <center>
     <style>
         h1 {
@@ -19,35 +25,40 @@
             <legend><b>Cadastro de Produto:</b></legend>
             <br>
             <label><b>Nome do Produto:</b></label><br>
-            <input type="text" name="nome_completo" required=""style="width: 45%; height: 35px;"/>
+            <input type="text" name="nome_completo" required="" class="form-control" style="width: 45%; height: 35px;"/>
             <br>
             <br>
             <label><b>Categoria do produto:</b></label><br>
-            <input type="text" name=categoria_id required="" style="width: 45%; height: 35px;"/>
+            <select name="categoria_id" required="" class="form-control" style="width: 45%; height: 35px;">
+                <option value="">Selecione uma Categoria</option>
+                <?php
+                foreach ($listaCategorias as $categoria) {
+                ?>
+                <option value="<?=$categoria["id"]?>"><?=$categoria["descricao"]?></option>
+                <?php
+                }
+                ?>
+            </select>
             <br>
             <br>
              <label><b>Preço de Venda:</b></label><br>
-             <input type="number" name="preco_venda" maxlength="10" required="" style="width: 45%; height: 35px;"/>
+             <input type="number" name="preco_venda" maxlength="10" required="" class="form-control" style="width: 45%; height: 35px;"/>
             <br>
             <br>
              <label><b>Quantidade Estoque:</b></label><br>
-            <input type="number" name="quantidade_estoque" required="" style="width: 45%; height: 35px;"/>
+            <input type="number" name="quantidade_estoque" required="" class="form-control" style="width: 45%; height: 35px;"/>
              <br>
             <br>
             <label><b>Descrição do produto:</b></label><br>
-            <input type="text" name="descricao" required="" style="width: 45%; height: 35px;"/>
+            <input type="text" name="descricao" required="" class="form-control" style="width: 45%; height: 35px;"/>
              <br>
             <br>
             <label><b>Preço de Custo (Valor do Fornecedor):</b></label><br>
-            <input type="number" name="preco_custo" maxlength="10" required="" style="width: 45%; height: 35px;"/>
+            <input type="number" name="preco_custo" maxlength="10" required="" class="form-control" style="width: 45%; height: 35px;"/>
             <br>
             <br>
             <label><b>Imagem do Produto:</b></label><br>
-            <input type="file" name="imagem" required="" style="width: 45%; height: 35px;"/>
-            <br>
-            <br>
-            <br>
-            <br>
+            <input type="file" name="imagem" required="" class="form-control" style="width: 45%; height: 35px;"/>
             <br>
             <br>
             <button type="submit" name="botao" class="btn btn-info btn-lg"> <span class="glyphicon glyphicon-ok"></span><b>  Confirmar</b></button>
@@ -61,8 +72,6 @@
     <br>
 </center>
 <?php
-require_once './dao/DaoLogin.php';
-require_once './model/Produto.php';
 if (isset($_POST["botao"])) {
     $produto = new Produto();
     $produto->setNome_completo(@$_POST["nome_completo"]);
@@ -80,7 +89,7 @@ if (isset($_POST["botao"])) {
     chown($arquivoDestino, 777);    
     /***fim do upload***/
 
-    $DaoLogin = DaoLogin::getInstance();
+   
     $exe = $DaoLogin->inserir_produto($produto);
     if ($exe) {
         echo "<script type='text/javascript'>"

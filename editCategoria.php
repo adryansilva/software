@@ -26,12 +26,10 @@
             <br>
             <label><b>Nome Completo:</b></label><br>
             <input type="hidden" name="id" value="<?=$atualizar_categoria["id"]?>"/><br>
-            <input type="text" name="descricao" value="<?=$atualizar_categoria["descricao"]?>" required="" style="width: 45%; height: 35px;"/><br>
+            <input type="text" name="descricao" value="<?=$atualizar_categoria["descricao"]?>" required="" class="form-control" style="width: 45%; height: 35px;"/>
             <br>
             <br>
            <button type="submit" name="botao" class="btn btn-info btn-lg"> <span class="glyphicon glyphicon-ok"></span> Confirmar </button>
-            <br>
-            <br>
         </fieldset>
         <br>
         <br>

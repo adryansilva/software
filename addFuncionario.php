@@ -19,35 +19,31 @@
             <legend><b>Cadastro de Funcionario:</b></legend>
             <br>
             <label><b>Nome Completo:</b></label><br>
-            <input type="text" name="nome_completo" required="" style="width: 45%; height: 35px;"/>
+            <input type="text" name="nome_completo" required="" class="form-control" style="width: 45%; height: 35px;"/>
             <br>
             <br>
             <label><b>CPF:</b></label><br>
-            <input type="number" name="cpf" maxlength="15"  required=""style="width: 45%; height: 35px;"/>
+            <input type="number" name="cpf" maxlength="15" required="" class="form-control" style="width: 45%; height: 35px;"/>
             <br>
             <br>
             <label><b>Número de Celular:</b></label><br>
-            <input type="number" name=numero_celular required="" maxlength="15" style="width: 45%; height: 35px;"/>
+            <input type="number" name=numero_celular required="" class="form-control" maxlength="15" style="width: 45%; height: 35px;"/>
             <br>
             <br>
              <label><b>Endereço Completo:</b></label><br>
-            <input type="text" name="endereco" required="" style="width: 45%; height: 35px;"/>
+            <input type="text" name="endereco" required="" class="form-control" style="width: 45%; height: 35px;"/>
             <br>
             <br>
              <label><b>Email:</b></label><br>
-            <input type="email" name="email" required="" style="width: 45%; height: 35px;"/>
+            <input type="email" name="email" required="" class="form-control" style="width: 45%; height: 35px;"/>
              <br>
             <br>
             <label><b>Função:</b></label><br>
-            <input type="text" name="funcao" required="" style="width: 45%; height: 35px;"/>
+            <input type="text" name="funcao" required="" class="form-control" style="width: 45%; height: 35px;"/>
              <br>
             <br>
             <label><b>Senha (Cuidado):</b></label><br>
-            <input type="text" name="senha" required="" style="width: 45%; height: 35px;"/>
-            <br>
-            <br>
-            <br>
-            <br>
+            <input type="text" name="senha" required="" class="form-control" style="width: 45%; height: 35px;"/>
             <br>
             <br>
             <button type="submit" name="botao" class="btn btn-info btn-lg"> <span class="glyphicon glyphicon-ok"></span><b>  Confirmar</b></button>

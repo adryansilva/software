@@ -26,18 +26,16 @@
             <br>
             <label><b>Nome Completo:</b></label><br>
             <input type="hidden" name="cpf" value="<?=$atualizar["cpf"]?>"/><br>
-            <input type="text" name="nome_completo" value="<?=$atualizar["nome_completo"]?>" required="" style="width: 45%; height: 35px;"/><br>
+            <input type="text" name="nome_completo" value="<?=$atualizar["nome_completo"]?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
             <label><b>Número Celular:</b></label><br>
-            <input type="number" name="numero_celular" maxlength="15" value="<?=$atualizar["numero_celular"]?>" required="" style="width: 45%; height: 35px;"/><br>
+            <input type="number" name="numero_celular" maxlength="15" value="<?=$atualizar["numero_celular"]?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
             <label><b>Endereço Completo:</b></label><br>
-            <input type="text" name="endereco" value="<?=$atualizar["endereco"]?>" required="" style="width: 45%; height: 35px;"/><br>
+            <input type="text" name="endereco" value="<?=$atualizar["endereco"]?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
             <label><b>Email:</b></label><br>
-            <input type="email" name="email" maxlength="100" value="<?=$atualizar["email"]?>" required="" style="width: 45%; height: 35px;"/><br>
+            <input type="email" name="email" maxlength="100" value="<?=$atualizar["email"]?>" required="" class="form-control" style="width: 45%; height: 35px;"/>
             <br>
             <br>
            <button type="submit" name="botao" class="btn btn-info btn-lg"> <span class="glyphicon glyphicon-ok"></span> Confirmar </button>
-            <br>
-            <br>
         </fieldset>
         <br>
         <br>

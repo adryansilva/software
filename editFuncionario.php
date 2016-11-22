@@ -5,13 +5,6 @@
     $atualizar_funcionario = $DaoLogin->getFuncionario($cpf);
 ?>
 <center>
-    <style>
-        h1 {
-            font-size: 30px;
-            font-weight: bold;
-            font-family: inherit;
-        }
-    </style>
     <div class="titulo2">
             <span class="label label-success">EDITAR FUNCIONÁRIO:</span>
         </div>
@@ -26,17 +19,17 @@
             <br>
             <label><b>Nome Completo:</b></label><br>
             <input type="hidden" name="cpf" value="<?=$atualizar_funcionario["cpf"]?>"/><br>
-            <input type="text" name="nome_completo" value="<?=$atualizar_funcionario["nome_completo"]?>" required="" style="width: 45%; height: 35px;"/><br>
+            <input type="text" name="nome_completo" value="<?=$atualizar_funcionario["nome_completo"]?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
             <label><b>Número Celular:</b></label><br>
-            <input type="number" name="numero_celular" maxlength="15" value="<?=$atualizar_funcionario["numero_celular"]?>" required="" style="width: 45%; height: 35px;"/><br>
+            <input type="number" name="numero_celular" maxlength="15" value="<?=$atualizar_funcionario["numero_celular"]?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
             <label><b>Endereço Completo:</b></label><br>
-            <input type="text" name="endereco" value="<?=$atualizar_funcionario["endereco"]?>" required="" style="width: 45%; height: 35px;"/><br>
+            <input type="text" name="endereco" value="<?=$atualizar_funcionario["endereco"]?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
             <label><b>Função:</b></label><br>
-            <input type="text" name="funcao" value="<?=$atualizar_funcionario["funcao"]?>" required="" style="width: 45%; height: 35px;"/><br>
+            <input type="text" name="funcao" value="<?=$atualizar_funcionario["funcao"]?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
             <label><b>Email:</b></label><br>
-            <input type="email" name="email" maxlength="100" value="<?=$atualizar_funcionario["email"]?>" required="" style="width: 45%; height: 35px;"/><br>
+            <input type="email" name="email" maxlength="100" value="<?=$atualizar_funcionario["email"]?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
             <label><b>Senha (Cuidado):</b></label><br>
-            <input type="text" name="senha" value="<?=$atualizar_funcionario["senha"]?>" required="" style="width: 45%; height: 35px;"/><br>
+            <input type="text" name="senha" value="<?=$atualizar_funcionario["senha"]?>" required="" class="form-control" style="width: 45%; height: 35px;"/>
             <br>
             <br>
            <button type="submit" name="botao" class="btn btn-info btn-lg"> <span class="glyphicon glyphicon-ok"></span> Confirmar </button>

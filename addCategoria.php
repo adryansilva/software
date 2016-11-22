@@ -1,11 +1,4 @@
 <center>
-    <style>
-        h1 {
-            font-size: 30px;
-            font-weight: bold;
-            font-family: inherit;
-        }
-    </style>
     <div class="titulo2">
             <span class="label label-success">ADICIONAR CATEGORIA:</span>
         </div>
@@ -19,7 +12,7 @@
             <legend><b>Cadastro de Categoria:</b></legend>
             <br>
             <label><b>Nome da Categoria:</b></label><br>
-            <input type="text" name="descricao" required=""style="width: 45%; height: 35px;"/>
+            <input type="text" name="descricao" required="" class="form-control" style="width: 45%; height: 35px;"/>
             <br>
             <br>
             <br>
