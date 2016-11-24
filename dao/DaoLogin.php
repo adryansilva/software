@@ -90,22 +90,6 @@ class DaoLogin {
             echo $exc->getMessage();
         }
     }
-     public function inserir_produto_pedido(Produto_pedido $produto_pedido) {
-        try {
-            $sql = "INSERT INTO produto_pedido "
-                    . " (produtos_codigo,"
-                    . "pedidos_numero)"
-                    . " VALUES"
-                    . " (:produtos_codigo,"
-                    . " :pedidos_numero)";
-            $p_sql = Conexao::getInstance()->prepare($sql);
-            $p_sql->bindValue(":produto_codigo", $produto_pedido->getProdutos_codigo());
-            $p_sql->bindValue(":pedidos_numero", $produto_pedido->getPedidos_numero());
-            return $p_sql->execute();
-        } catch (PDOException $exc) {
-            echo $exc->getMessage();
-        }
-    }
 
     public function inserir_produto(Produto $produto) {
         try {
@@ -138,16 +122,16 @@ class DaoLogin {
             echo $exc->getMessage();
         }
     }
+
     public function inserir_pedido(Pedido $pedido, Produto_pedido $produto_pedido) {
         try {
-            $sql = "INSERT INTO pedido "
+            $sql = "INSERT INTO pedido, produto_pedido"
                     . " (numero,"
                     . " data,"
-                    . " SELECT FROM produtos.codigo, produtos.codigo
-                         FROM produto_pedido;,"
                     . " custo,"
-                    . "cliente_cpf,"
-                    . "funcionario_cpf)"
+                    . " produtos,"
+                    . " cliente_cpf,"
+                    . " funcionario_cpf)"
                     . " VALUES "
                     . " (:numero,"
                     . " :data,"
@@ -211,7 +195,8 @@ class DaoLogin {
         $p_sql->execute();
         return $p_sql->fetchAll(PDO::FETCH_ASSOC);
     }
-     public function listar_produto_pedido() {
+
+    public function listar_produto_pedido() {
         $sql = "SELECT * FROM produto_pedido";
         $p_sql = Conexao::getInstance()->prepare($sql);
         $p_sql->execute();
@@ -323,6 +308,7 @@ class DaoLogin {
         $p_sql->execute();
         return $p_sql->fetch(PDO::FETCH_ASSOC);
     }
+
     public function getPedido($numero) {
         $sql = "SELECT * FROM pedido WHERE numero =:numero";
         $p_sql = Conexao::getInstance()->prepare($sql);
