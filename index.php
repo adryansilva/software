@@ -104,7 +104,7 @@
         <fieldset style = "width: 45%; margin: 100px auto; opacity:.80;">
             <form action=" " method="post"> 
                 <center>
-                    <img src="img/logo.png" alt="img_" width="270" height="120"/>
+                    <img src="img/logo.png" alt="img_" width="270" height="140"/>
                     <h2><b> CPF: </b><input type="text" name="usuario_inserido" required="" autocomplete="off" autofocus="" /></h2>
                     <h2><b> Senha: </b><input type="password" name="senha_inserido" required="" autocomplete="off"/></h2><br>
                     <input type='submit' name="OnLogin" value='Entrar'/>

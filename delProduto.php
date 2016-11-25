@@ -10,7 +10,8 @@
         . "</script>;";
     } else {
         echo "<script type='text/javascript'>"
-        . " alert('Não foi concluir a exclusão do Produto!');"
+        . " alert('Não foi concluir a exclusão do Produto! "
+                . "TALVEZ EXISTA UM PEDIDO PARA ESTE PRODUTO!');"
         . "location.href='?pg=produto';"
         . "</script>;";
     }

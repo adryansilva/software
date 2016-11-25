@@ -13,10 +13,10 @@
             outline-style: solid;
             outline-color: black;
             margin: 5px;
-            width: 95%;
+            width: 98%;
         }
         table, th, td {
-            border: 1px solid black;
+            border: 0.5px solid black;
             text-align: center;
             margin: 5px auto;
         }

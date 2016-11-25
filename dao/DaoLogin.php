@@ -123,35 +123,6 @@ class DaoLogin {
         }
     }
 
-    public function inserir_pedido(Pedido $pedido) {
-        try {
-            $sql = "INSERT INTO pedido"
-                    . " (numero,"
-                    . " data,"
-                    . " custo,"
-                    . " produtos,"
-                    . " clientes_cpf,"
-                    . " funcionarios_cpf)"
-                    . " VALUES "
-                    . " (:numero,"
-                    . " :data,"
-                    . " :custo,"
-                    . " :produtos,"
-                    . " :clientes_cpf,"
-                    . " :funcionarios_cpf)";
-            $p_sql = Conexao::getInstance()->prepare($sql);
-            $p_sql->bindValue(":numero", $pedido->getNumero());
-            $p_sql->bindValue(":data", $pedido->getData());
-            $p_sql->bindValue(":custo", $pedido->getCusto());
-            $p_sql->bindValue(":produtos", $pedido->getProdutos());
-            $p_sql->bindValue(":clientes_cf", $pedido->getClientes_cpf());
-            $p_sql->bindValue(":funcionarios_cpf", $pedido->getFuncionarios_cpf());
-            return $p_sql->execute();
-        } catch (PDOException $exc) {
-            echo $exc->getMessage();
-        }
-    }
-
     public function inserir_produto_pedido(Produto_pedido $produto_pedido) {
         try {
             $sql = "INSERT INTO produto_pedido"
@@ -159,6 +130,33 @@ class DaoLogin {
                     . " pedidos_numero)";
             $p_sql = Conexao::getInstance()->prepare($sql);
             $p_sql->bindValue(":produtos_codigo", $produto_pedido->getProdutos_codigo());
+            $p_sql->bindValue(":pedidos_numero", $produto_pedido->getPedidos_numero());
+            return $p_sql->execute();
+        } catch (PDOException $exc) {
+            echo $exc->getMessage();
+        }
+    }
+
+    public function inserir_pedido(Pedido $pedido) {
+        try {
+            $sql = "INSERT INTO pedido "
+                    . " (data,"
+                    . " produtos,"
+                    . " custo,"
+                    . " clientes_cpf,"
+                    . "funcionarios_cpf)"
+                    . " VALUES "
+                    . " (:data,"
+                    . " :produtos,"
+                    . " :custo,"
+                    . " :clientes_cpf,"
+                    . " :funcionarios_cpf)";
+            $p_sql = Conexao::getInstance()->prepare($sql);
+            $p_sql->bindValue(":data", $pedido->getData());
+            $p_sql->bindValue(":produtos", $pedido->getProdutos());
+            $p_sql->bindValue(":custo", $pedido->getCusto());
+            $p_sql->bindValue(":clientes_cpf", $pedido->getClientes_cpf());
+            $p_sql->bindValue(":funcionarios_cpf", $pedido->getFuncionarios_cpf());
             return $p_sql->execute();
         } catch (PDOException $exc) {
             echo $exc->getMessage();
@@ -188,9 +186,9 @@ class DaoLogin {
                 . " produto.descricao,"
                 . " produto.preco_custo,"
                 . " categoria.descricao as categoria"
-                . " FROM produto,categoria "
-                . " WHERE produto.categoria_id = categoria_id "
-                . " ORDER BY produto.categoria_id ";
+                . " FROM produto, categoria"
+                . " WHERE produto.categoria_id = categoria.id"
+                . " ORDER BY produto.codigo";
         $p_sql = Conexao::getInstance()->prepare($sql);
         $p_sql->execute();
         return $p_sql->fetchAll(PDO::FETCH_ASSOC);
