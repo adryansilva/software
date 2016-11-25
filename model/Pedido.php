@@ -14,7 +14,7 @@
 class Pedido {
     private $numero;
     private $data;
-    private $equipamento;
+    private $produtos;
     private $custo;
     private $clientes_cpf;
     private $funcionarios_cpf;
@@ -26,8 +26,8 @@ class Pedido {
         return $this->data;
     }
 
-    function getEquipamento() {
-        return $this->equipamento;
+    function getProdutos() {
+        return $this->produtos;
     }
 
     function getCusto() {
@@ -50,8 +50,8 @@ class Pedido {
         $this->data = $data;
     }
 
-    function setEquipamento($equipamento) {
-        $this->equipamento = $equipamento;
+    function setProdutos($produtos) {
+        $this->produtos = $produtos;
     }
 
     function setCusto($custo) {

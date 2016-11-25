@@ -123,28 +123,42 @@ class DaoLogin {
         }
     }
 
-    public function inserir_pedido(Pedido $pedido, Produto_pedido $produto_pedido) {
+    public function inserir_pedido(Pedido $pedido) {
         try {
-            $sql = "INSERT INTO pedido, produto_pedido"
+            $sql = "INSERT INTO pedido"
                     . " (numero,"
                     . " data,"
                     . " custo,"
                     . " produtos,"
-                    . " cliente_cpf,"
-                    . " funcionario_cpf)"
+                    . " clientes_cpf,"
+                    . " funcionarios_cpf)"
                     . " VALUES "
                     . " (:numero,"
                     . " :data,"
                     . " :custo,"
-                    . " :cliente_cpf,"
-                    . " :funcionario_cpf)";
+                    . " :produtos,"
+                    . " :clientes_cpf,"
+                    . " :funcionarios_cpf)";
             $p_sql = Conexao::getInstance()->prepare($sql);
             $p_sql->bindValue(":numero", $pedido->getNumero());
             $p_sql->bindValue(":data", $pedido->getData());
-            $p_sql->bindValue(":produtos.codigo", $produto_pedido->getProdutos_codigo());
             $p_sql->bindValue(":custo", $pedido->getCusto());
-            $p_sql->bindValue(":cliente_cf", $pedido->getClientes_cpf());
-            $p_sql->bindValue(":funcionario_cpf", $pedido->getFuncionarios_cpf());
+            $p_sql->bindValue(":produtos", $pedido->getProdutos());
+            $p_sql->bindValue(":clientes_cf", $pedido->getClientes_cpf());
+            $p_sql->bindValue(":funcionarios_cpf", $pedido->getFuncionarios_cpf());
+            return $p_sql->execute();
+        } catch (PDOException $exc) {
+            echo $exc->getMessage();
+        }
+    }
+
+    public function inserir_produto_pedido(Produto_pedido $produto_pedido) {
+        try {
+            $sql = "INSERT INTO produto_pedido"
+                    . " (produtos_codigo,"
+                    . " pedidos_numero)";
+            $p_sql = Conexao::getInstance()->prepare($sql);
+            $p_sql->bindValue(":produtos_codigo", $produto_pedido->getProdutos_codigo());
             return $p_sql->execute();
         } catch (PDOException $exc) {
             echo $exc->getMessage();
