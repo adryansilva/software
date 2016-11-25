@@ -54,8 +54,8 @@ $dados = $DaoLogin->listar_pedido();
         echo "<td>" . $row["custo"] . "</td>";
         echo "<td>" . $row["clientes_cpf"] . "</td>";
         echo "<td>" . $row["funcionarios_cpf"] . "</td>";
-        echo "        <td><a href='?pg=editProduto&codigo=$numero' title='Editar'> <i class='glyphicon glyphicon-pencil'></i></a>    ";
-        echo "       <a href='?pg=delProduto&codigo=$numero' title='Excluir' onclick='return confirm(\"Deseja Excluir mesmo?\")'> <i class='glyphicon glyphicon-trash'></i></a></td>   ";
+        echo "        <td><a href='?pg=editPedido&numero=$numero' title='Editar'> <i class='glyphicon glyphicon-pencil'></i></a>    ";
+        echo "       <a href='?pg=delPedido&numero=$numero' title='Excluir' onclick='return confirm(\"Deseja Excluir mesmo?\")'> <i class='glyphicon glyphicon-trash'></i></a></td>   ";
         echo " </tr>";
     }
     ?>

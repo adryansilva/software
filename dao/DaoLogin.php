@@ -248,6 +248,17 @@ class DaoLogin {
         }
     }
 
+    public function deletar_pedido($numero) {
+        $sql = "DELETE FROM pedido WHERE numero =:numero";
+        try {
+            $p_sql = Conexao::getInstance()->prepare($sql);
+            $p_sql->bindValue(":numero", $numero);
+            return $p_sql->execute();
+        } catch (PDOException $exc) {
+            return $exc->getMessage();
+        }
+    }
+
     function cpf($cpf, $senha) {
         try {
             $sql = Conexao::getInstance()->prepare("SELECT * FROM funcionario WHERE cpf = :cpf AND senha = :senha");

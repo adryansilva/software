@@ -3,9 +3,10 @@ require_once './dao/DaoLogin.php';
 require_once './model/Pedido.php';
 $DaoLogin = DaoLogin::getInstance();
 $listaCategorias = $DaoLogin->listar_categoria();
-$listar_pedido = $DaoLogin->listar_pedido();
 $listar_produto_pedido = $DaoLogin->listar_produto_pedido();
 $listar_produto = $DaoLogin->listar_produto();
+$listar_cliente = $DaoLogin->listar_cliente();
+$listar_funcionario = $DaoLogin->listar_funcionario();
 ?>
 <center>
     <div class="titulo2">
@@ -30,12 +31,14 @@ $listar_produto = $DaoLogin->listar_produto();
                 <?php
                 foreach ($listar_produto_pedido as $produto_pedido) {
                     foreach ($listar_produto as $produto) {
-                      ?>
-                <option value="<?=$produto_pedido["produtos_codigo"]?>"><?=$produto["nome_completo"]?></option>
-                <?php
-                }}
+                        ?>
+                        <option value="<?= $produto_pedido["produtos_codigo"] ?>"><?= $produto["nome_completo"] ?></option>
+                        <?php
+                    }
+                }
                 ?>
-            </select>  
+            </select>
+            <button type="button" name="mais_produtos" class="btn btn-info btn-lg"> <span class="glyphicon glyphicon-plus"></span><b></b></button>
             <br>
             <br>
             <label><b>Custo:</b></label><br>
@@ -46,10 +49,10 @@ $listar_produto = $DaoLogin->listar_produto();
             <select name="clientes_cpf" required="" class="form-control" style="width: 45%; height: 35px;">
                 <option value="">Selecione CPF do Cliente</option>
                 <?php
-                foreach ($listar_pedido as $pedido) {
-                ?>
-                <option value="<?=$pedido["clientes_cpf"]?>"><?=$pedido["clientes_cpf"]?></option>
-                <?php
+                foreach ($listar_cliente as $cliente) {
+                    ?>
+                    <option value="<?= $cliente["cpf"] ?>"><?= $cliente["cpf"] ?></option>
+                    <?php
                 }
                 ?>
             </select>
@@ -59,10 +62,10 @@ $listar_produto = $DaoLogin->listar_produto();
             <select name="funcionarios_cpf" required="" class="form-control" style="width: 45%; height: 35px;">
                 <option value="">Selecione CPF do Funcionário</option>
                 <?php
-                foreach ($listar_pedido as $pedido) {
-                ?>
-                <option value="<?=$pedido["funcionarios_cpf"]?>"><?=$pedido["funcionarios_cpf"]?></option>
-                <?php
+                foreach ($listar_funcionario as $funcionario) {
+                    ?>
+                    <option value="<?= $funcionario["cpf"] ?>"><?= $funcionario["cpf"] ?></option>
+                    <?php
                 }
                 ?>
             </select>
@@ -88,14 +91,14 @@ if (isset($_POST["botao"])) {
     $pedido->setFuncionarios_cpf(@$_POST["funcionarios_cpf"]);
     $exe = $DaoLogin->inserir_pedido($pedido);
     if ($exe) {
-            echo "<script type='text/javascript'>"
-            . " alert('Pedido Cadastrado com sucesso!');"
-            . "location.href='?pg=painel';"
-            . "</script>;";
-        } else {
-            echo "<script type='text/javascript'>"
-            . " alert('Não foi possivel cadastrar o Pedido!');"
-            . "location.href='?pg=painel';"
-            . "</script>";
+        echo "<script type='text/javascript'>"
+        . " alert('Pedido Cadastrado com sucesso!');"
+        . "location.href='?pg=painel';"
+        . "</script>;";
+    } else {
+        echo "<script type='text/javascript'>"
+        . " alert('Não foi possivel cadastrar o Pedido!');"
+        . "location.href='?pg=painel';"
+        . "</script>";
     }
 }
