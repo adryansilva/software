@@ -25,7 +25,7 @@ $atualizar_produto = $DaoLogin->getProduto($codigo);
             <label><b>Preço Venda:</b></label><br>
             <input type="number" name="preco_venda" value="<?= $atualizar_produto["preco_venda"] ?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
             <label><b>Quantidade em Estoque:</b></label><br>
-            <input type="text" name="quantidade_estoque" value="<?= $atualizar_produto["quantidade_estoque"] ?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
+            <input type="number" name="quantidade_estoque" value="<?= $atualizar_produto["quantidade_estoque"] ?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
             <label><b>Descrição do Produto:</b></label><br>
             <input type="text" name="descricao" maxlength="100" value="<?= $atualizar_produto["descricao"] ?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
             <label><b>Preco Custo:</b></label><br>
@@ -33,9 +33,16 @@ $atualizar_produto = $DaoLogin->getProduto($codigo);
             <br>
             <br>
             <label>Imagem Atual:</label><br>
-            <input type="image" name="imagem_atual" src="fotos/<?= $atualizar_produto["imagem"] ?>"required="" class="form-control" style="width: 100px;"/><br>
+            <input type="image" name="imagem_atual" src="fotos/<?= $atualizar_produto["imagem"] ?>"required="" class="form-control" style="width: 100px; height: 80px"/><br>
             <label><b>Nova Imagem:</b></label><br>
-            <input type="file" name="imagem" value="<?= $atualizar_produto["imagem"] ?>" required="" class="form-control" style="width: 45%; height: 40px;"/><br>
+            <input type="file" name="imagem" value="<?= $atualizar_produto["imagem"] ?>" class="form-control" style="width: 45%; height: 40px;"/><br>
+            <br>
+            <br>
+            <label><b>Destaque:</b></label><br>
+            <select name="destaque" required="" class="form-control" style="width: 45%; height: 35px;">
+               <option value="1">Sim</option>
+               <option value="0">Não</option>
+            </select>
             <br>
             <br>
             <button type="submit" name="botao" class="btn btn-info btn-lg"> <span class="glyphicon glyphicon-ok"></span> Confirmar </button>
@@ -57,7 +64,9 @@ if (isset($_POST["botao"])) {
     $produto->setCategoria_id(@$_POST["categoria_id"]);
     $produto->setPreco_venda(@$_POST["preco_venda"]);
     $produto->setDescricao(@$_POST["descricao"]);
+    $produto->setQuantidade_estoque(@$_POST["quantidade_estoque"]);
     $produto->setPreco_custo(@$_POST["preco_custo"]);
+    $produto->setDestaque(@$_POST["destaque"]);
 
     /*     * *upload de imagem* */
     if ($atualizar_produto["imagem"] != $_FILES["imagem"]["name"] && !empty($_FILES["imagem"]["name"])) {

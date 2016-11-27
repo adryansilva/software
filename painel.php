@@ -36,9 +36,9 @@ $dados = $DaoLogin->listar_pedido();
 ?>
 <table>
     <tr>
-        <th> Número:</th>
-        <th> Data:</th>
-        <th> Produtos:</th>
+        <th> Número: </th>
+        <th> Data: </th>
+        <th> Produtos: </th>
         <th> Custo:</th>
         <th> CPF do Cliente:</th>
         <th> CPF do Funcionário:</th>

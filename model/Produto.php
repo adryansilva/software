@@ -20,6 +20,7 @@ class Produto {
     private $descricao;
     private $preco_custo;
     private $categoria_id;
+    private $destaque;
     
     function getCodigo() {
         return $this->codigo;
@@ -53,6 +54,10 @@ class Produto {
         return $this->categoria_id;
     }
 
+    function getDestaque() {
+        return $this->destaque;
+    }
+
     function setCodigo($codigo) {
         $this->codigo = $codigo;
     }
@@ -84,6 +89,11 @@ class Produto {
     function setCategoria_id($categoria_id) {
         $this->categoria_id = $categoria_id;
     }
+
+    function setDestaque($destaque) {
+        $this->destaque = $destaque;
+    }
+
 
 
 

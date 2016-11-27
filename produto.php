@@ -41,6 +41,7 @@
     <table>
         <tr>
             <th>Código:</th>
+            <th>Destaque (1:Sim):</th>
             <th>Nome do Produto:</th>
             <th>Categoria:</th>
             <th>Preço Venda:</th>
@@ -55,6 +56,7 @@
             $codigo = $row["codigo"];
             echo "<tr>";
             echo "<td>" . $row["codigo"] . "</td>";
+            echo "<td>" . $row["destaque"] . "</td>";
             echo "<td>" . $row["nome_completo"] . "</td>";
             echo "<td>" . $row["categoria"] . "</td>";
             echo "<td>" . $row["preco_venda"] . "</td>";

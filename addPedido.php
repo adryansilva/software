@@ -1,6 +1,7 @@
 <?php
 require_once './dao/DaoLogin.php';
 require_once './model/Pedido.php';
+require_once './model/Produto_pedido.php';
 $DaoLogin = DaoLogin::getInstance();
 $listaCategorias = $DaoLogin->listar_categoria();
 $listar_produto_pedido = $DaoLogin->listar_produto_pedido();
@@ -85,12 +86,15 @@ $listar_funcionario = $DaoLogin->listar_funcionario();
 if (isset($_POST["botao"])) {
     $pedido = new Pedido();
     $pedido->setData(@$_POST["data"]);
-    $pedido->setProdutos(@$_POST["produtos_codigo"]);
     $pedido->setCusto(@$_POST["custo"]);
+    $pedido->setProdutos(@$_POST["produtos_codigo"]);
     $pedido->setClientes_cpf(@$_POST["clientes_cpf"]);
     $pedido->setFuncionarios_cpf(@$_POST["funcionarios_cpf"]);
     $exe = $DaoLogin->inserir_pedido($pedido);
     if ($exe) {
+        $produto_pedido = new Produto_pedido();
+        $produto_pedido->setProdutos_codigo(@$_POST["produtos_codigo"]);
+        $exe = $DaoLogin->inserir_produto_pedido($produto_pedido);
         echo "<script type='text/javascript'>"
         . " alert('Pedido Cadastrado com sucesso!');"
         . "location.href='?pg=painel';"

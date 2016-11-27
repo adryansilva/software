@@ -61,6 +61,13 @@ $listaCategorias = $DaoLogin->listar_categoria();
             <input type="file" name="imagem" required="" class="form-control" style="width: 45%; height: 35px;"/>
             <br>
             <br>
+            <label><b>Destaque:</b></label><br>
+            <select name="destaque" required="" class="form-control" style="width: 45%; height: 35px;">
+            <option value="1">Sim</option>
+               <option value="0">Não</option>
+            </select>
+            <br>
+            <br>
             <button type="submit" name="botao" class="btn btn-info btn-lg"> <span class="glyphicon glyphicon-ok"></span><b>  Confirmar</b></button>
             <button type="reset" class="btn btn-info btn-lg"> <span class="glyphicon glyphicon-trash"></span><b> Limpar</b></button>
             <br>
@@ -81,9 +88,10 @@ if (isset($_POST["botao"])) {
     $produto->setDescricao(@$_POST["descricao"]);
     $produto->setPreco_custo(@$_POST["preco_custo"]);
     $produto->setImagem($_FILES["imagem"]["name"]);
+    $produto->setDestaque(@$_POST["destaque"]);
     
     /***upload de imagem**/
-    $pastaDestino = "fotos/";
+   $pastaDestino = "fotos/";
     $arquivoDestino = $pastaDestino.basename($_FILES["imagem"]["name"]);  
     move_uploaded_file($_FILES["imagem"]["tmp_name"], $arquivoDestino);
     chown($arquivoDestino, 777);    

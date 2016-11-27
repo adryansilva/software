@@ -100,6 +100,7 @@ class DaoLogin {
                     . " quantidade_estoque,"
                     . "descricao,"
                     . "preco_custo,"
+                    . "destaque,"
                     . "imagem)"
                     . " VALUES "
                     . " (:nome_completo,"
@@ -108,6 +109,7 @@ class DaoLogin {
                     . " :quantidade_estoque,"
                     . " :descricao,"
                     . " :preco_custo,"
+                    . ":destaque,"
                     . " :imagem)";
             $p_sql = Conexao::getInstance()->prepare($sql);
             $p_sql->bindValue(":nome_completo", $produto->getNome_completo());
@@ -116,6 +118,7 @@ class DaoLogin {
             $p_sql->bindValue(":quantidade_estoque", $produto->getQuantidade_estoque());
             $p_sql->bindValue(":descricao", $produto->getDescricao());
             $p_sql->bindValue(":preco_custo", $produto->getPreco_custo());
+            $p_sql->bindValue(":destaque", $produto->getDestaque());
             $p_sql->bindValue(":imagem", $produto->getImagem());
             return $p_sql->execute();
         } catch (PDOException $exc) {
@@ -127,7 +130,10 @@ class DaoLogin {
         try {
             $sql = "INSERT INTO produto_pedido"
                     . " (produtos_codigo,"
-                    . " pedidos_numero)";
+                    . " pedidos_numero)"
+                    . "VALUES "
+                    ." (:produtos_codigo,"
+                    .":SELECT MAX(numero) FROM pedido)";
             $p_sql = Conexao::getInstance()->prepare($sql);
             $p_sql->bindValue(":produtos_codigo", $produto_pedido->getProdutos_codigo());
             $p_sql->bindValue(":pedidos_numero", $produto_pedido->getPedidos_numero());
@@ -185,6 +191,7 @@ class DaoLogin {
                 . " produto.quantidade_estoque,"
                 . " produto.descricao,"
                 . " produto.preco_custo,"
+                . " produto.destaque,"
                 . " categoria.descricao as categoria"
                 . " FROM produto, categoria"
                 . " WHERE produto.categoria_id = categoria.id"
@@ -253,6 +260,16 @@ class DaoLogin {
         try {
             $p_sql = Conexao::getInstance()->prepare($sql);
             $p_sql->bindValue(":numero", $numero);
+            return $p_sql->execute();
+        } catch (PDOException $exc) {
+            return $exc->getMessage();
+        }
+    }
+    public function deletar_categoria($id) {
+        $sql = "DELETE FROM categoria WHERE id =:id";
+        try {
+            $p_sql = Conexao::getInstance()->prepare($sql);
+            $p_sql->bindValue(":id", $id);
             return $p_sql->execute();
         } catch (PDOException $exc) {
             return $exc->getMessage();
@@ -376,7 +393,7 @@ class DaoLogin {
 
     public function atualizar_produto(Produto $produto) {
         try {
-            $sql = "UPDATE produto set nome_completo =:nome_completo, categoria_id=:categoria_id, preco_venda=:preco_venda, quantidade_estoque=:quantidade_estoque, descricao=:descricao, preco_custo=:preco_custo, imagem=:imagem"
+            $sql = "UPDATE produto set nome_completo =:nome_completo, categoria_id=:categoria_id, preco_venda=:preco_venda, quantidade_estoque=:quantidade_estoque, descricao=:descricao, preco_custo=:preco_custo, destaque=:destaque, imagem=:imagem"
                     . " WHERE codigo=:codigo";
             $p_sql = Conexao::getInstance()->prepare($sql);
             $p_sql->bindValue(":codigo", $produto->getCodigo());
@@ -386,6 +403,7 @@ class DaoLogin {
             $p_sql->bindValue(":quantidade_estoque", $produto->getQuantidade_estoque());
             $p_sql->bindValue(":descricao", $produto->getDescricao());
             $p_sql->bindValue(":preco_custo", $produto->getPreco_custo());
+            $p_sql->bindValue(":destaque", $produto->getDestaque());
             $p_sql->bindValue(":imagem", $produto->getImagem());
 
             return $p_sql->execute();
