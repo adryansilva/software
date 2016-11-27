@@ -90,6 +90,31 @@ class DaoLogin {
             echo $exc->getMessage();
         }
     }
+     public function inserir_servico(Servico $servico) {
+        try {
+            $sql = "INSERT INTO servico "
+                    . " (id,"
+                    . " tipo,"
+                    . " problema,"
+                    . " custo,"
+                    . " relatorio)"
+                    . " VALUES "
+                    . " (:id,"
+                    . " :tipo,"
+                    . " :problema,"
+                    . " :custo,"
+                    . " :relatorio)";
+            $p_sql = Conexao::getInstance()->prepare($sql);
+            $p_sql->bindValue(":id", $servico->getId());
+            $p_sql->bindValue(":tipo", $servico->getTipo());
+            $p_sql->bindValue(":problema", $servico->getProblema());
+            $p_sql->bindValue(":custo", $servico->getCusto());
+            $p_sql->bindValue(":relatorio", $servico->getRelatorio());
+            return $p_sql->execute();
+        } catch (PDOException $exc) {
+            echo $exc->getMessage();
+        }
+    }
 
     public function inserir_produto(Produto $produto) {
         try {
@@ -171,6 +196,12 @@ class DaoLogin {
 
     public function listar_cliente() {
         $sql = "SELECT * FROM cliente";
+        $p_sql = Conexao::getInstance()->prepare($sql);
+        $p_sql->execute();
+        return $p_sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function listar_servico() {
+        $sql = "SELECT * FROM servico";
         $p_sql = Conexao::getInstance()->prepare($sql);
         $p_sql->execute();
         return $p_sql->fetchAll(PDO::FETCH_ASSOC);
