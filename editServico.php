@@ -23,7 +23,7 @@ $atualizar_servico = $DaoLogin->getServico($id);
             <label><b>Problema:</b></label><br>
             <input type="text" name="problema" value="<?= $atualizar_servico["problema"] ?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
             <label><b>Custo (Para vender):</b></label><br>
-            <input type="number" name="custo" value="<?= $atualizar_servico["custo"] ?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
+            <input type="text" name="custo" value="<?= $atualizar_servico["custo"] ?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
             <label><b>Relatório (Descrição):</b></label><br>
             <input type="text" name="relatorio" value="<?= $atualizar_servico["relatorio"] ?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
             <br>
