@@ -27,6 +27,10 @@
             font-weight: bold;
             font-family: inherit;
         }
+        table img {
+            width: 80px;
+            margin: 5px auto;
+        }
     </style>
     <?php
     require_once 'dao/DaoLogin.php';
@@ -40,6 +44,7 @@
             <th>Problema:</th>
             <th>Custo:</th>
             <th>Relatório:</th>
+            <th>Imagem:</th>
             <th> Ações </th>
         </tr>
         <?php
@@ -51,6 +56,7 @@
             echo "<td>" . $row["problema"] . "</td>";
             echo "<td>" . $row["custo"] . "</td>";
             echo "<td>" . $row["relatorio"] . "</td>";
+            echo "<td><img src='fotos/{$row["imagem"]}'/></td>";
             echo "        <td><a href='?pg=editServico&id=$id' title='Editar'> <i class='glyphicon glyphicon-pencil'></i></a>    ";
             echo "       <a href='?pg=delServico&id=$id' title='Excluir' onclick='return confirm(\"Deseja Excluir mesmo?\")'> <i class='glyphicon glyphicon-trash'></i></a></td>   ";
             echo " </tr>";

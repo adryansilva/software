@@ -26,6 +26,10 @@ $atualizar_servico = $DaoLogin->getServico($id);
             <input type="text" name="custo" value="<?= $atualizar_servico["custo"] ?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
             <label><b>Relatório (Descrição):</b></label><br>
             <input type="text" name="relatorio" value="<?= $atualizar_servico["relatorio"] ?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
+            <label>Imagem Atual:</label><br>
+            <input type="image" name="imagem_atual" src="fotos/<?= $atualizar_servico["imagem"] ?>"required="" class="form-control" style="width: 100px; height: 80px"/><br>
+            <label><b>Nova Imagem:</b></label><br>
+            <input type="file" name="imagem" value="<?= $atualizar_servico["imagem"] ?>" class="form-control" style="width: 45%; height: 40px;"/><br>
             <br>
             <br>
             <button type="submit" name="botao" class="btn btn-info btn-lg"> <span class="glyphicon glyphicon-ok"></span> Confirmar </button>
@@ -47,6 +51,21 @@ if (isset($_POST["botao"])) {
     $servico->setProblema(@$_POST["problema"]);
     $servico->setCusto(@$_POST["custo"]);
     $servico->setRelatorio(@$_POST["relatorio"]);
+    /*     * *upload de imagem* */
+    if ($atualizar_servico["imagem"] != $_FILES["imagem"]["name"] && !empty($_FILES["imagem"]["name"])) {
+        $pastaDestino = "fotos/";
+        $arquivoDestino = $pastaDestino . basename($_FILES["imagem"]["name"]);
+        //apaga imagem atual para trocar pela nova
+        chown($arquivoDestino, 777);
+        unlink($pastaDestino . $atualizar_servico["imagem"]);
+        //envia a nova imagem para a pasta
+        move_uploaded_file($_FILES["imagem"]["tmp_name"], $arquivoDestino);
+        $servico->setImagem($_FILES["imagem"]["name"]);
+    } else {
+        $servico->setImagem($atualizar_servico["imagem"]);
+    }
+    /*     * *fim do upload** */
+
     $DaoLogin = DaoLogin::getInstance();
     $exe = $DaoLogin->atualizar_servico($servico);
     if ($exe) {

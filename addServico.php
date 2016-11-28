@@ -39,6 +39,10 @@ $DaoLogin = DaoLogin::getInstance();
             <input type="text" name="relatorio" required="" class="form-control" style="width: 45%; height: 35px;"/>
             <br>
             <br>
+            <label><b>Imagem do Serviço:</b></label><br>
+            <input type="file" name="imagem" required="" class="form-control" style="width: 45%; height: 35px;"/>
+            <br>
+            <br>
             <button type="submit" name="botao" class="btn btn-info btn-lg"> <span class="glyphicon glyphicon-ok"></span><b>  Confirmar</b></button>
             <button type="reset" class="btn btn-info btn-lg"> <span class="glyphicon glyphicon-trash"></span><b> Limpar</b></button>
             <br>
@@ -56,16 +60,17 @@ if (isset($_POST["botao"])) {
     $servico->setProblema(@$_POST["problema"]);
     $servico->setCusto(@$_POST["custo"]);
     $servico->setRelatorio(@$_POST["relatorio"]);
-    $exe = $DaoLogin->inserir_servico($servico);
+    $servico->setImagem($_FILES["imagem"]["name"]);
+    
+    /***upload de imagem**/
+   $pastaDestino = "fotos/";
+    $arquivoDestino = $pastaDestino.basename($_FILES["imagem"]["name"]);  
+    move_uploaded_file($_FILES["imagem"]["tmp_name"], $arquivoDestino);
+    chown($arquivoDestino, 777);    
+    /***fim do upload***/
+$exe = $DaoLogin->inserir_servico($servico);
+   
     if ($exe) {
-        echo "<script type='text/javascript'>"
-        . " alert('Serviço Cadastrado com sucesso!');"
-        . "location.href='?pg=servicos';"
-        . "</script>;";
-    } else {
-        echo "<script type='text/javascript'>"
-        . " alert('Não foi possivel cadastrar o Serviço!');"
-        . "location.href='?pg=servicos';"
-        . "</script>";
+       
     }
 }

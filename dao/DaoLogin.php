@@ -98,19 +98,22 @@ class DaoLogin {
                     . " tipo,"
                     . " problema,"
                     . " custo,"
-                    . " relatorio)"
+                    . " relatorio,"
+                    . " imagem)"
                     . " VALUES "
                     . " (:id,"
                     . " :tipo,"
                     . " :problema,"
                     . " :custo,"
-                    . " :relatorio)";
+                    . " :relatorio,"
+                    . " :imagem)";
             $p_sql = Conexao::getInstance()->prepare($sql);
             $p_sql->bindValue(":id", $servico->getId());
             $p_sql->bindValue(":tipo", $servico->getTipo());
             $p_sql->bindValue(":problema", $servico->getProblema());
             $p_sql->bindValue(":custo", $servico->getCusto());
             $p_sql->bindValue(":relatorio", $servico->getRelatorio());
+            $p_sql->bindValue(":imagem", $servico->getImagem());
             return $p_sql->execute();
         } catch (PDOException $exc) {
             echo $exc->getMessage();
@@ -309,6 +312,7 @@ class DaoLogin {
             return $exc->getMessage();
         }
     }
+
     public function deletar_servico($id) {
         $sql = "DELETE FROM servico WHERE id =:id";
         try {
@@ -427,7 +431,7 @@ class DaoLogin {
 
     public function atualizar_servico(Servico $servico) {
         try {
-            $sql = "UPDATE servico set tipo =:tipo, problema =:problema, custo =:custo, relatorio =:relatorio"
+            $sql = "UPDATE servico set tipo =:tipo, problema =:problema, custo =:custo, relatorio =:relatorio, imagem=:imagem"
                     . " WHERE id=:id";
             $p_sql = Conexao::getInstance()->prepare($sql);
             $p_sql->bindValue(":id", $servico->getId());
@@ -435,6 +439,7 @@ class DaoLogin {
             $p_sql->bindValue(":problema", $servico->getProblema());
             $p_sql->bindValue(":custo", $servico->getCusto());
             $p_sql->bindValue(":relatorio", $servico->getRelatorio());
+            $p_sql->bindValue(":imagem", $servico->getImagem());
             return $p_sql->execute();
         } catch (PDOException $exc) {
             return $exc->getMessage();

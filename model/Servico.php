@@ -5,6 +5,7 @@ class Servico {
     private $problema;
     private $custo;
     private $relatorio;
+    private $imagem;
     function getId() {
         return $this->id;
     }
@@ -23,6 +24,10 @@ class Servico {
 
     function getRelatorio() {
         return $this->relatorio;
+    }
+
+    function getImagem() {
+        return $this->imagem;
     }
 
     function setId($id) {
@@ -44,6 +49,11 @@ class Servico {
     function setRelatorio($relatorio) {
         $this->relatorio = $relatorio;
     }
+
+    function setImagem($imagem) {
+        $this->imagem = $imagem;
+    }
+
 
 
 }
