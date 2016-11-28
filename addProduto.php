@@ -42,7 +42,7 @@ $listaCategorias = $DaoLogin->listar_categoria();
             <br>
             <br>
              <label><b>Preço de Venda:</b></label><br>
-             <input type="number" name="preco_venda" maxlength="10" required="" class="form-control" style="width: 45%; height: 35px;"/>
+             <input type="text" name="preco_venda" maxlength="10" required="" class="form-control" style="width: 45%; height: 35px;"/>
             <br>
             <br>
              <label><b>Quantidade Estoque:</b></label><br>
@@ -54,7 +54,7 @@ $listaCategorias = $DaoLogin->listar_categoria();
              <br>
             <br>
             <label><b>Preço de Custo (Valor do Fornecedor):</b></label><br>
-            <input type="number" name="preco_custo" maxlength="10" required="" class="form-control" style="width: 45%; height: 35px;"/>
+            <input type="text" name="preco_custo" maxlength="10" required="" class="form-control" style="width: 45%; height: 35px;"/>
             <br>
             <br>
             <label><b>Imagem do Produto:</b></label><br>

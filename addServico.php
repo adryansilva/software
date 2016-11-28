@@ -32,7 +32,7 @@ $DaoLogin = DaoLogin::getInstance();
             <br>
             <br>
              <label><b>Preco de Custo:</b></label><br>
-            <input type="number" name="custo" required="" class="form-control" style="width: 45%; height: 35px;"/>
+            <input type="text" name="custo" required="" class="form-control" style="width: 45%; height: 35px;"/>
              <br>
             <br>
             <label><b>Relatório do Serviço (Descrição):</b></label><br>

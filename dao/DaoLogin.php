@@ -90,7 +90,8 @@ class DaoLogin {
             echo $exc->getMessage();
         }
     }
-     public function inserir_servico(Servico $servico) {
+
+    public function inserir_servico(Servico $servico) {
         try {
             $sql = "INSERT INTO servico "
                     . " (id,"
@@ -157,8 +158,8 @@ class DaoLogin {
                     . " (produtos_codigo,"
                     . " pedidos_numero)"
                     . "VALUES "
-                    ." (:produtos_codigo,"
-                    .":SELECT MAX(numero) FROM pedido)";
+                    . " (:produtos_codigo,"
+                    . ":SELECT MAX(numero) FROM pedido)";
             $p_sql = Conexao::getInstance()->prepare($sql);
             $p_sql->bindValue(":produtos_codigo", $produto_pedido->getProdutos_codigo());
             $p_sql->bindValue(":pedidos_numero", $produto_pedido->getPedidos_numero());
@@ -200,6 +201,7 @@ class DaoLogin {
         $p_sql->execute();
         return $p_sql->fetchAll(PDO::FETCH_ASSOC);
     }
+
     public function listar_servico() {
         $sql = "SELECT * FROM servico";
         $p_sql = Conexao::getInstance()->prepare($sql);
@@ -296,8 +298,19 @@ class DaoLogin {
             return $exc->getMessage();
         }
     }
+
     public function deletar_categoria($id) {
         $sql = "DELETE FROM categoria WHERE id =:id";
+        try {
+            $p_sql = Conexao::getInstance()->prepare($sql);
+            $p_sql->bindValue(":id", $id);
+            return $p_sql->execute();
+        } catch (PDOException $exc) {
+            return $exc->getMessage();
+        }
+    }
+    public function deletar_servico($id) {
+        $sql = "DELETE FROM servico WHERE id =:id";
         try {
             $p_sql = Conexao::getInstance()->prepare($sql);
             $p_sql->bindValue(":id", $id);
@@ -356,6 +369,14 @@ class DaoLogin {
         return $p_sql->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getServico($id) {
+        $sql = "SELECT * FROM servico WHERE id =:id";
+        $p_sql = Conexao::getInstance()->prepare($sql);
+        $p_sql->bindValue(":id", $id);
+        $p_sql->execute();
+        return $p_sql->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function getFuncionario($cpf) {
         $sql = "SELECT * FROM funcionario WHERE cpf =:cpf";
         $p_sql = Conexao::getInstance()->prepare($sql);
@@ -398,6 +419,22 @@ class DaoLogin {
             $p_sql->bindValue(":numero_celular", $cliente->getNumeroCelular());
             $p_sql->bindValue(":endereco", $cliente->getEndereco());
             $p_sql->bindValue(":email", $cliente->getEmail());
+            return $p_sql->execute();
+        } catch (PDOException $exc) {
+            return $exc->getMessage();
+        }
+    }
+
+    public function atualizar_servico(Servico $servico) {
+        try {
+            $sql = "UPDATE servico set tipo =:tipo, problema =:problema, custo =:custo, relatorio =:relatorio"
+                    . " WHERE id=:id";
+            $p_sql = Conexao::getInstance()->prepare($sql);
+            $p_sql->bindValue(":id", $servico->getId());
+            $p_sql->bindValue(":tipo", $servico->getTipo());
+            $p_sql->bindValue(":problema", $servico->getProblema());
+            $p_sql->bindValue(":custo", $servico->getCusto());
+            $p_sql->bindValue(":relatorio", $servico->getRelatorio());
             return $p_sql->execute();
         } catch (PDOException $exc) {
             return $exc->getMessage();

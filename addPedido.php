@@ -43,7 +43,7 @@ $listar_funcionario = $DaoLogin->listar_funcionario();
             <br>
             <br>
             <label><b>Custo:</b></label><br>
-            <input type="number" name="custo" required="" maxlength="10" class="form-control" style="width: 45%; height: 35px;"/>
+            <input type="text" name="custo" required="" maxlength="10" class="form-control" style="width: 45%; height: 35px;"/>
             <br>
             <br>
             <label><b>CPF do Cliente:</b></label><br>

@@ -23,13 +23,13 @@ $atualizar_produto = $DaoLogin->getProduto($codigo);
             <label><b>Categoria do Produto:</b></label><br>
             <input type="text" name="categoria_id" maxlength="15" value="<?= $atualizar_produto["categoria_id"] ?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
             <label><b>Preço Venda:</b></label><br>
-            <input type="number" name="preco_venda" value="<?= $atualizar_produto["preco_venda"] ?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
+            <input type="text" name="preco_venda" value="<?= $atualizar_produto["preco_venda"] ?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
             <label><b>Quantidade em Estoque:</b></label><br>
             <input type="number" name="quantidade_estoque" value="<?= $atualizar_produto["quantidade_estoque"] ?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
             <label><b>Descrição do Produto:</b></label><br>
             <input type="text" name="descricao" maxlength="100" value="<?= $atualizar_produto["descricao"] ?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
             <label><b>Preco Custo:</b></label><br>
-            <input type="number" name="preco_custo" value="<?= $atualizar_produto["preco_custo"] ?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
+            <input type="text" name="preco_custo" value="<?= $atualizar_produto["preco_custo"] ?>" required="" class="form-control" style="width: 45%; height: 35px;"/><br>
             <br>
             <br>
             <label>Imagem Atual:</label><br>
