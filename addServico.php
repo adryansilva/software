@@ -18,7 +18,7 @@ $DaoLogin = DaoLogin::getInstance();
     <a href="?pg=servico"><h4><b>Voltar</b></h4></a>
     <br>
     <br>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <br>
         <fieldset style="width: 60%;">
             <legend><b>Cadastro de Servico:</b></legend>
@@ -71,6 +71,14 @@ if (isset($_POST["botao"])) {
 $exe = $DaoLogin->inserir_servico($servico);
    
     if ($exe) {
-       
+         echo "<script type='text/javascript'>"
+        . " alert('Serviço Cadastrado com sucesso!');"
+        . "location.href='?pg=servicos';"
+        . "</script>;";
+    } else {
+        echo "<script type='text/javascript'>"
+        . " alert('Não foi possivel cadastrar o Serviço!');"
+        . "location.href='?pg=servicos';"
+        . "</script>";
     }
 }
