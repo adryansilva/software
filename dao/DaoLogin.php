@@ -197,6 +197,32 @@ class DaoLogin {
             echo $exc->getMessage();
         }
     }
+     public function inserir_ordem_servico(Ordem_servico $ordem_servico) {
+        try {
+            $sql = "INSERT INTO ordem_servico "
+                    . " (data,"
+                    . " relatorio,"
+                    . " clientes_cpf,"
+                    . "funcionarios_cpf,"
+                    . "custo)"
+                    . " VALUES "
+                    . " (:data,"
+                    . " :relatorio,"
+                    . " :clientes_cpf,"
+                    . " :funcionarios_cpf,"
+                     . " :custo)";
+            $p_sql = Conexao::getInstance()->prepare($sql);
+            $p_sql->bindValue(":data", $ordem_servico->getData());
+            $p_sql->bindValue(":relatorio", $ordem_servico->getRelatorio());
+            $p_sql->bindValue(":clientes_cpf", $ordem_servico->getClientes_cpf());
+            $p_sql->bindValue(":funcionarios_cpf", $ordem_servico->getFuncionarios_cpf());
+            $p_sql->bindValue(":custo", $ordem_servico->getCusto());
+            return $p_sql->execute();
+        } catch (PDOException $exc) {
+            echo $exc->getMessage();
+        }
+    }
+
 
     public function listar_cliente() {
         $sql = "SELECT * FROM cliente";
@@ -207,6 +233,12 @@ class DaoLogin {
 
     public function listar_servico() {
         $sql = "SELECT * FROM servico";
+        $p_sql = Conexao::getInstance()->prepare($sql);
+        $p_sql->execute();
+        return $p_sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+      public function listar_ordem_servico() {
+        $sql = "SELECT * FROM ordem_servico";
         $p_sql = Conexao::getInstance()->prepare($sql);
         $p_sql->execute();
         return $p_sql->fetchAll(PDO::FETCH_ASSOC);

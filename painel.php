@@ -60,3 +60,13 @@ $dados = $DaoLogin->listar_pedido();
     }
     ?>
 </table>
+<br>
+<br>
+<br>
+<br>
+<center>
+    <div class="titulo2">
+        <span class="label label-success">ACOMPANHE OS PEDIDOS DE SERVIÇOS:!</span>
+    </div><br>
+    <a href="?pg=addpedido_servico"><input type="button" value="Adicionar Pedido de Serviço" class="addpedido_servico"/></a><br><br><br>
+</center>
