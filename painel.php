@@ -70,3 +70,36 @@ $dados = $DaoLogin->listar_pedido();
     </div><br>
     <a href="?pg=addpedido_servico"><input type="button" value="Adicionar Pedido de Serviço" class="addpedido_servico"/></a><br><br><br>
 </center>
+<?php
+require_once 'dao/DaoLogin.php';
+$DaoLogin = DaoLogin::getInstance();
+$dados = $DaoLogin->listar_ordem_servico();
+?>
+<table>
+    <tr>
+        <th> Número: </th>
+        <th> Data: </th>
+        <th> Tipo_Serviço: </th>
+        <th> Relatorio: </th>
+        <th> CPF do Cliente:</th>
+        <th> CPF do Funcionário:</th>
+        <th> Custo: </th>
+        <th> Ações </th>
+    </tr>
+    <?php
+    foreach ($dados as $row) {
+        $numero = $row["numero"];
+        echo "<tr>";
+        echo "<td>" . $row["numero"] . "</td>";
+        echo "<td>" . $row["data"] . "</td>";
+        echo "<td>" . $row["tipo_servico"] . "</td>";
+        echo "<td>" . $row["relatorio"] . "</td>";
+        echo "<td>" . $row["clientes_cpf"] . "</td>";
+        echo "<td>" . $row["funcionarios_cpf"] . "</td>";
+        echo "<td>" . $row["custo"] . "</td>";
+        echo "        <td><a href='?pg=editOrdem_servico&numero=$numero' title='Editar'> <i class='glyphicon glyphicon-pencil'></i></a>    ";
+        echo "       <a href='?pg=delOrdem_servico&numero=$numero' title='Excluir' onclick='return confirm(\"Deseja Excluir mesmo?\")'> <i class='glyphicon glyphicon-trash'></i></a></td>   ";
+        echo " </tr>";
+    }
+    ?>
+</table>

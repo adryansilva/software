@@ -40,7 +40,7 @@ $listar_funcionario = $DaoLogin->listar_funcionario();
             <br>
             <br>
             <label><b>Relatorio (Descrição):</b></label><br>
-            <input type="text" name="relatorio" required="" maxlength="10" class="form-control" style="width: 45%; height: 35px;"/>
+            <input type="text" name="relatorio" required="" class="form-control" style="width: 45%; height: 35px;"/>
             <br>
             <br>
             <label><b>Custo (De acordo com o preço do serviço):</b></label><br>
@@ -85,18 +85,15 @@ $listar_funcionario = $DaoLogin->listar_funcionario();
 </center>
 <?php
 if (isset($_POST["botao"])) {
-    $ordem_servico = new Ordem_pedido();
+    $ordem_servico = new Ordem_servico();
     $ordem_servico->setData(@$_POST["data"]);
     $ordem_servico->setTipo_servico(@$_POST["tipo_servico"]);
     $ordem_servico->setRelatorio(@$_POST["relatorio"]);
-    $ordem_servico->setCusto(@$_POST["custo"]);
     $ordem_servico->setClientes_cpf(@$_POST["clientes_cpf"]);
     $ordem_servico->setFuncionarios_cpf(@$_POST["funcionarios_cpf"]);
+    $ordem_servico->setCusto(@$_POST["custo"]);
     $exe = $DaoLogin->inserir_ordem_servico($ordem_servico);
     if ($exe) {
-        $produto_pedido = new Produto_pedido();
-        $produto_pedido->setProdutos_codigo(@$_POST["produtos_codigo"]);
-        $exe = $DaoLogin->inserir_produto_pedido($produto_pedido);
         echo "<script type='text/javascript'>"
         . " alert('Pedido de Serviço Cadastrado com sucesso!');"
         . "location.href='?pg=painel';"

@@ -1,6 +1,6 @@
 <?php
 
-class Ordem_pedido {
+class Ordem_servico {
    private $numero;
    private $data;
     private $tipo_servico;

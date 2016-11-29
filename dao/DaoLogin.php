@@ -201,18 +201,21 @@ class DaoLogin {
         try {
             $sql = "INSERT INTO ordem_servico "
                     . " (data,"
+                  . " tipo_servico,"
                     . " relatorio,"
                     . " clientes_cpf,"
                     . "funcionarios_cpf,"
                     . "custo)"
                     . " VALUES "
                     . " (:data,"
+                    . " :tipo_servico,"
                     . " :relatorio,"
                     . " :clientes_cpf,"
                     . " :funcionarios_cpf,"
                      . " :custo)";
             $p_sql = Conexao::getInstance()->prepare($sql);
             $p_sql->bindValue(":data", $ordem_servico->getData());
+            $p_sql->bindValue(":tipo_servico", $ordem_servico->getTipo_servico());
             $p_sql->bindValue(":relatorio", $ordem_servico->getRelatorio());
             $p_sql->bindValue(":clientes_cpf", $ordem_servico->getClientes_cpf());
             $p_sql->bindValue(":funcionarios_cpf", $ordem_servico->getFuncionarios_cpf());
@@ -355,6 +358,16 @@ class DaoLogin {
             return $exc->getMessage();
         }
     }
+    public function deletar_ordem_servico($numero) {
+        $sql = "DELETE FROM ordem_servico WHERE numero =:numero";
+        try {
+            $p_sql = Conexao::getInstance()->prepare($sql);
+            $p_sql->bindValue(":numero", $numero);
+            return $p_sql->execute();
+        } catch (PDOException $exc) {
+            return $exc->getMessage();
+        }
+    }
 
     function cpf($cpf, $senha) {
         try {
@@ -444,6 +457,13 @@ class DaoLogin {
         $p_sql->execute();
         return $p_sql->fetch(PDO::FETCH_ASSOC);
     }
+     public function getOrdem_servico($numero) {
+        $sql = "SELECT * FROM ordem_servico WHERE numero =:numero";
+        $p_sql = Conexao::getInstance()->prepare($sql);
+        $p_sql->bindValue(":numero", $numero);
+        $p_sql->execute();
+        return $p_sql->fetch(PDO::FETCH_ASSOC);
+    }
 
     public function atualizar(Cliente $cliente) {
         try {
@@ -472,6 +492,22 @@ class DaoLogin {
             $p_sql->bindValue(":custo", $servico->getCusto());
             $p_sql->bindValue(":relatorio", $servico->getRelatorio());
             $p_sql->bindValue(":imagem", $servico->getImagem());
+            return $p_sql->execute();
+        } catch (PDOException $exc) {
+            return $exc->getMessage();
+        }
+    }
+    public function atualizar_ordem_servico(Ordem_servico $ordem_servico) {
+        try {
+            $sql = "UPDATE ordem_servico set data =:data, tipo_servico =:tipo_servico, relatorio =:relatorio, clientes_cpf=:clientes_cpf, funcionarios_cpf=:funcionarios_cpf"
+                    . " WHERE numero=:numero";
+            $p_sql = Conexao::getInstance()->prepare($sql);
+            $p_sql->bindValue(":numero", $ordem_servico->getNumero());
+            $p_sql->bindValue(":data", $ordem_servico->getData());
+            $p_sql->bindValue(":tipo_servico", $ordem_servico->getTipo_servico());
+            $p_sql->bindValue(":relatorio", $ordem_servico->getRelatorio());
+            $p_sql->bindValue(":clientes_cpf", $ordem_servico->getClientes_cpf());
+             $p_sql->bindValue(":funcionarios_cpf", $ordem_servico->getFuncionarios_cpf());
             return $p_sql->execute();
         } catch (PDOException $exc) {
             return $exc->getMessage();
