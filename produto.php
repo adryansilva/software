@@ -61,7 +61,8 @@
             echo "<td>" . $row["categoria"] . "</td>";
             echo "<td>" . $row["preco_venda"] . "</td>";
             echo "<td>" . $row["quantidade_estoque"] . "</td>";
-            echo "<td>" . $row["descricao"] . "</td>";
+            echo "<td>" . (
+      substr($row["descricao"], 0, 50)) . '<b> ... </b>' . "</td>";
             echo "<td>" . $row["preco_custo"] . "</td>";
             echo "<td><img src='fotos/{$row["imagem"]}'/></td>";
             echo "        <td><a href='?pg=editProduto&codigo=$codigo' title='Editar'> <i class='glyphicon glyphicon-pencil'></i></a>    ";

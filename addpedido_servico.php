@@ -27,7 +27,7 @@ $listar_funcionario = $DaoLogin->listar_funcionario();
             <br>
             <label><b>Tipo de Serviço:</b></label><br>
             <select name="tipo_servico" required="" class="form-control" style="width: 45%; height: 35px;">
-                <option value="">Selecione produtos</option>
+                <option value="">Selecione o tipo de serviço</option>
                 <?php
                 foreach ($listar_servico as $servico) {
                         ?>
